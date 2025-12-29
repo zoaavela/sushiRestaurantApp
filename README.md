@@ -1,146 +1,75 @@
-# Oishī
+# 🍣 Oishi - Borne de Commande Digitale
 
+**Oishi** est une application web de type "borne tactile" permettant aux clients de consulter le catalogue et de passer commande directement en restaurant. Le projet repose sur une architecture découplée utilisant **Angular** pour l'interface utilisateur et **PHP** pour la gestion des données et de l'API.
 
+---
 
-🍣 Sushi Box - Borne de Commande Digitale
+## 🚀 Technologies Utilisées
 
-Sushi Box est une application web de type borne de commande (sans paiement en ligne) permettant de simuler une prise de commande fluide en restaurant. Le projet lie une interface moderne en Angular à un backend PHP pour la gestion des données.
+* **Frontend :** Angular (TypeScript, HTML, CSS)
+* **Backend :** PHP (API REST)
+* **Base de Données :** MySQL
+* **Serveur Local :** Environnement type XAMPP / WAMP / MAMP
 
+---
 
+## 🛠️ Protocole d'Installation
 
-🚀 Technologies Utilisées
+Suivez rigoureusement ces étapes pour déployer le projet sur votre machine locale :
 
-Frontend : Angular (TypeScript, HTML, CSS)
+### 1. Préparation de la Base de Données
+1. Lancez votre serveur MySQL (via XAMPP/WAMP/MAMP).
+2. Ouvrez **phpMyAdmin** et créez une nouvelle base de données nommée : `oishi`.
+3. Importez le fichier `oishi.sql` (situé à la racine du projet) pour générer les tables et les données de test.
 
+### 2. Configuration du Backend (API PHP)
+Le dossier API doit être servi par votre serveur local (Apache) pour traiter les requêtes.
+1. Localisez le dossier **`API/`** à la racine de ce projet.
+2. Déplacez ou copiez l'intégralité de ce dossier dans le répertoire **htdocs** de votre installation :
+   * *Exemple Windows :* `C:\xampp\htdocs\API`
+   * *Exemple Mac :* `/Applications/MAMP/htdocs/API`
+3. Vérifiez que votre serveur Apache est bien activé.
 
+### 3. Lancement du Frontend (Angular)
+1. Ouvrez un terminal dans le dossier racine du projet (là où se trouve le dossier `src/` et le fichier `package.json`).
+2. Installez les dépendances Node.js :
+   ```bash
+   npm install
+   ```
+3. Lancez le serveur de développement Angular :
+   ```bash
+   ng serve
+   ```
+4. Ouvrez votre navigateur sur : http://localhost:4200
 
-Backend : PHP (API REST)
+---
 
+## 📂 Arborescence du Projet
 
-
-Base de Données : MySQL
-
-
-
-Serveur Local : Environnement type XAMPP / WAMP / MAMP
-
-
-
-🛠️ Protocole d'Installation
-
-Suivez rigoureusement ces étapes pour déployer le projet localement :
-
-
-
-1\. Base de Données
-
-Lancez votre serveur MySQL (via XAMPP/WAMP).
-
-
-
-Créez une base de données nommée : sushi-box.
-
-
-
-Importez le fichier sushi\_box.sql situé à la racine du projet.
-
-
-
-2\. Configuration du Backend (API)
-
-Le dossier API contient les scripts PHP nécessaires au fonctionnement du site.
-
-
-
-Localisez le dossier API dans les fichiers téléchargés.
-
-
-
-Déplacez ce dossier dans le répertoire htdocs de votre serveur local (ex: C:/xampp/htdocs/).
-
-
-
-Assurez-vous que le serveur Apache est activé.
-
-
-
-3\. Lancement du Frontend (Angular)
-
-Ouvrez un terminal dans le dossier contenant le projet Angular (là où se trouve le dossier src).
-
-
-
-Installez les dépendances :
-
-
-
-Bash
-
-
-
-npm install
-
-Lancez le serveur de développement :
-
-
-
-Bash
-
-
-
-ng serve
-
-L'application est alors accessible à l'adresse : http://localhost:4200
-
-
-
-📂 Arborescence du Projet (GitHub)
-
-Voici l'organisation des fichiers telle qu'elle apparaît sur ce dépôt :
-
-
-
-Plaintext
-
-
-
+```
 .
+├── API/                 # Dossier Backend PHP (À DÉPLACER DANS HTDOCS)
+│   ├── config.php       # Connexion à la base de données
+│   └── ...              # Scripts de récupération et d'envoi de données
+├── src/                 # Code source Angular (Composants, Services, Styles)
+├── oishi.sql            # Script d'importation de la base de données MySQL
+├── package.json         # Dépendances et scripts du projet
+└── README.md            # Documentation
+```
 
-├── sushi\_box/          # Code source Angular (TS, HTML, CSS)
+---
 
-├── API/                # Scripts PHP (à déplacer dans htdocs)
+## 📋 Fonctionnalités du Site
 
-├── sushi\_box.sql       # Script d'importation de la base de données
+* **Catalogue Dynamique :** Affichage des produits récupérés via l'API.
+* **Gestion du Panier :** Système d'ajout et de suppression d'articles avec calcul du total automatique.
+* **Validation de Commande :** Envoi de la sélection client vers la base de données pour traitement en cuisine.
+* **Interface Borne :** Design épuré et ergonomique, adapté à un usage sur écran tactile.
 
-└── README.md           # Documentation📋 Fonctionnalités du Site
+> **Note :** Ce projet est une borne de commande, il n'intègre pas de module de paiement en ligne.
 
+---
 
+## 👤 Auteur
 
-Catalogue complet : Affichage dynamique des sushis et menus.
-
-
-
-Panier interactif : Ajout et suppression de produits sans rechargement de page.
-
-
-
-Validation de commande : Envoi de la sélection client vers la base de données.
-
-
-
-Interface Borne : Design épuré adapté à une utilisation tactile sur site.
-
-
-
-Note : Pas de module de paiement (validation simple).
-
-
-
-👤 Auteur
-
-Ton Nom / Pseudo - Développement Fullstack
-
-
-
-S
-
+Développement Fullstack - Ce projet a été réalisé pour démontrer l'interaction entre un framework moderne (Angular) et une API backend en PHP.
