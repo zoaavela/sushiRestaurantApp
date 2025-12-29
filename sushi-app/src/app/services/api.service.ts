@@ -9,7 +9,7 @@ import { Commande } from '../models/commande.model';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'http://localhost/SAE303/sushi_box/api';
+  private baseUrl = 'http://localhost/API/sushi_box/api';
 
   constructor(private http: HttpClient) { }
 
