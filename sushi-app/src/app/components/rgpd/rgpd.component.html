@@ -1,0 +1,24 @@
+<div class="rgpd-wrapper">
+  <div class="container">
+    <h1 class="page-title">Politique de Confidentialité</h1>
+    
+    <div class="rgpd-layout">
+      <aside class="sidebar">
+        <h3 class="sidebar-header">Sommaire</h3>
+        <nav class="rgpd-nav">
+          <button *ngFor="let section of sections" 
+                  class="nav-item" 
+                  [class.active]="selectedSectionId === section.id"
+                  (click)="selectSection(section.id)">
+            <span class="section-number">{{ section.id }}.</span>
+            <span class="section-title-text">{{ section.title.substring(3) }}</span>
+          </button>
+        </nav>
+      </aside>
+
+      <main class="content-panel">
+        <div class="content-fade" [innerHTML]="currentContent"></div>
+      </main>
+    </div>
+  </div>
+</div>

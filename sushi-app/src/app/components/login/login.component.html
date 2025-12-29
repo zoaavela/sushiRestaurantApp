@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="login-card">
+    <h1 class="page-title">Connexion</h1>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      
+      <!-- Email -->
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" formControlName="email"
+               placeholder="votre@email.com"
+               [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        <div class="error-message" 
+             *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          <span *ngIf="loginForm.get('email')?.errors?.['required']">
+            L'email est requis
+          </span>
+          <span *ngIf="loginForm.get('email')?.errors?.['email']">
+            Format d'email invalide
+          </span>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label class="form-label">Mot de passe</label>
+        <input type="password" class="form-control" formControlName="password"
+               [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        <div class="error-message"
+             *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          <span *ngIf="loginForm.get('password')?.errors?.['required']">
+            Le mot de passe est requis
+          </span>
+          <span *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            Minimum 6 caractères
+          </span>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="error" class="alert alert-error">
+        {{ error }}
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-primary" [disabled]="loginForm.invalid || loading">
+        <span *ngIf="loading" class="spinner"></span>
+        {{ loading ? 'Connexion...' : 'Se connecter' }}
+      </button>
+
+      <!-- Register Link -->
+      <div class="auth-links">
+        <p>Pas encore de compte ? <a routerLink="/register" class="link">S'inscrire</a></p>
+      </div>
+    </form>
+  </div>
+</div>

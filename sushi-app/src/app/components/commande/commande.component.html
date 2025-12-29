@@ -1,0 +1,120 @@
+<div class="container">
+  <h1 class="page-title">Finaliser votre commande</h1>
+
+  <div class="commande-content">
+    <div class="form-section">
+      <form [formGroup]="commandeForm" (ngSubmit)="soumettreCommande()">
+        <div class="form-header">
+          <h2>Informations</h2>
+        </div>
+
+        <div class="form-body">
+          <div class="form-group">
+            <label class="form-label">Nom complet *</label>
+            <input type="text" class="form-control" formControlName="nom"
+              [class.error]="commandeForm.get('nom')?.invalid && commandeForm.get('nom')?.touched">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input type="email" class="form-control" formControlName="email"
+              [class.error]="commandeForm.get('email')?.invalid && commandeForm.get('email')?.touched">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Téléphone *</label>
+            <input type="tel" class="form-control" formControlName="telephone"
+              [class.error]="commandeForm.get('telephone')?.invalid && commandeForm.get('telephone')?.touched">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Adresse (Facturation) *</label>
+            <textarea class="form-control" formControlName="adresse" rows="2"
+              [class.error]="commandeForm.get('adresse')?.invalid && commandeForm.get('adresse')?.touched"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Notes</label>
+            <textarea class="form-control" formControlName="notes" rows="2"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Code Promo</label>
+            <input type="text" class="form-control" [class.error]="promoError" formControlName="codePromo"
+              placeholder="Ex: OISHI2026">
+            <div class="error-message" *ngIf="promoError">
+              {{ promoError }}
+            </div>
+          </div>
+
+          <div class="student-alert" *ngIf="remiseEtudiant > 0">
+            <div class="alert-icon"></div>
+            <div class="alert-content">
+              <strong>Tarif Étudiant</strong>
+              <p>Présentez votre carte étudiante au comptoir.</p>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-button"
+            [disabled]="commandeForm.invalid || submitting || panier.length === 0">
+            <span *ngIf="submitting" class="spinner"></span>
+            {{ submitting ? 'Validation...' : 'Valider le retrait' }}
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="summary-section">
+      <div class="summary-header">
+        <h2>Panier</h2>
+      </div>
+      <div class="summary-body">
+        <div *ngFor="let item of panier" class="summary-item">
+          <div class="item-info">
+            <strong class="item-name">{{ item.box.name }}</strong>
+            <div class="item-quantity">x{{ item.quantite }}</div>
+          </div>
+          <span class="item-price">{{ item.box.price * item.quantite | currency:'EUR' }}</span>
+        </div>
+
+        <div class="summary-footer">
+          <div class="summary-row"><span>Sous-total</span><span>{{ sousTotal | currency:'EUR' }}</span></div>
+          <div class="summary-row discount" *ngIf="remiseEtudiant > 0"><span>Étudiant</span><span>-{{ remiseEtudiant |
+              currency:'EUR' }}</span></div>
+          <div class="summary-row discount" *ngIf="remiseVolume > 0"><span>Volume</span><span>-{{ remiseVolume |
+              currency:'EUR' }}</span></div>
+          <div class="summary-row discount" *ngIf="remisePromo > 0"><span>Promo</span><span>-{{ remisePromo |
+              currency:'EUR' }}</span></div>
+
+          <div class="summary-row total"><strong>À régler</strong><strong class="total-amount">{{ totalFinal |
+              currency:'EUR' }}</strong></div>
+          <p class="payment-info">ℹ️ Paiement au comptoir (CB, Espèces).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showSuccessModal">
+  <div class="modal-content success-modal">
+    <div class="modal-icon"></div>
+
+    <h2>Commande #{{ confirmedOrderInfo?.id }}</h2>
+    <p class="success-msg">Envoyée en cuisine avec succès !</p>
+
+    <div class="modal-recap">
+      <h3>Votre récapitulatif</h3>
+      <div class="recap-list">
+        <div *ngFor="let item of confirmedOrderInfo?.items" class="recap-item">
+          <span>{{ item.quantite }}x {{ item.box.name }}</span>
+          <span>{{ item.box.price * item.quantite | currency:'EUR' }}</span>
+        </div>
+      </div>
+
+      <div class="modal-total">
+        <span>À payer sur place</span>
+        <strong>{{ confirmedOrderInfo?.total | currency:'EUR' }}</strong>
+      </div>
+    </div>
+
+    <button class="btn-primary full-width" (click)="closeModalAndRedirect()">
+      Retour à l'Accueil
+    </button>
+  </div>
+</div>

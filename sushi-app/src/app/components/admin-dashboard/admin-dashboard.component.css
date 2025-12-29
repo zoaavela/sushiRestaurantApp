@@ -1,0 +1,86 @@
+.dashboard-container { padding-bottom: 4rem; }
+
+.dashboard-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;
+}
+.date-badge { 
+  background: var(--bg-input); color: var(--text-muted); 
+  padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* --- KPIS (Grille de 4) --- */
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem; margin-bottom: 3rem;
+}
+
+.kpi-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 4px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  transition: transform 0.3s;
+}
+.kpi-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+
+.kpi-info h3 { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+.kpi-value { font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin: 0; font-family: var(--font-title); }
+.kpi-info small { font-size: 0.75rem; color: #555; }
+
+.kpi-icon {
+  width: 45px; height: 45px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+.kpi-icon.green { background: rgba(40, 167, 69, 0.1); color: #28a745; }
+.kpi-icon.orange { background: rgba(255, 152, 0, 0.1); color: #ff9800; }
+.kpi-icon.blue { background: rgba(33, 150, 243, 0.1); color: #2196f3; }
+.kpi-icon.purple { background: rgba(156, 39, 176, 0.1); color: #9c27b0; }
+
+/* --- GRAPHIQUES --- */
+.charts-section { margin-bottom: 2rem; }
+
+.bottom-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; margin-top: 2rem;
+}
+
+.chart-card, .list-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem; border-radius: 4px;
+}
+
+h3 { color: var(--text-main); font-size: 1rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+
+.chart-wrapper { width: 100%; height: 300px; position: relative; }
+.chart-wrapper.small { height: 250px; }
+
+/* --- TOP PRODUITS (Avec Images) --- */
+.product-item {
+  display: flex; align-items: center;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+.product-item:last-child { border: none; }
+
+.rank {
+  font-family: var(--font-title); color: var(--text-muted); font-size: 1.2rem;
+  width: 30px; font-weight: bold;
+}
+
+.product-thumb {
+  width: 40px; height: 40px;
+  border-radius: 50%; object-fit: cover;
+  margin-right: 15px; border: 1px solid var(--border);
+}
+
+.product-info { flex-grow: 1; display: flex; flex-direction: column; }
+.product-name { font-weight: 600; color: var(--text-main); font-size: 0.95rem; }
+.product-sales { font-size: 0.8rem; color: var(--text-muted); }
+.product-price { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+
+@media (max-width: 900px) {
+  .bottom-grid { grid-template-columns: 1fr; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+}

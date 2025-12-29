@@ -1,0 +1,67 @@
+<div class="container">
+  <h1 class="page-title">Votre Panier</h1>
+
+  <!-- Panier vide -->
+  <div *ngIf="panier.length === 0" class="empty-panier animate-fade-up">
+    <h2>Votre panier est vide</h2>
+    <p>Découvrez nos délicieuses boxes !</p>
+    <a routerLink="/menu" class="btn-primary hover-lift">Voir le menu</a>
+  </div>
+
+  <!-- Panier avec articles -->
+  <div *ngIf="panier.length > 0">
+    <div class="panier-items">
+      <div *ngFor="let item of panier" class="panier-item hover-glow">
+        <img [src]="'assets/images/' + item.box.image + '.jpg'" [alt]="item.box.name" class="item-image">
+        <!-- ... content ... -->
+
+        <div class="item-details">
+          <h3 class="item-name">{{ item.box.name }}</h3>
+          <p class="item-description">{{ item.box.description }}</p>
+
+          <div class="item-foods">
+            <strong>Contenu :</strong>
+            <span *ngFor="let food of item.box.foods; let last = last">
+              {{ food.quantity }}x {{ food.name }}{{ !last ? ', ' : '' }}
+            </span>
+          </div>
+        </div>
+
+        <div class="item-controls">
+          <div class="quantity-controls">
+            <button class="quantity-btn hover-lift" (click)="modifierQuantite(item.box.id, item.quantite - 1)">
+              −
+            </button>
+            <span class="quantity">{{ item.quantite }}</span>
+            <button class="quantity-btn hover-lift" (click)="modifierQuantite(item.box.id, item.quantite + 1)">
+              +
+            </button>
+          </div>
+
+          <div class="item-prices">
+            <span class="item-total">
+              {{ (item.box.price * item.quantite) | currency:'EUR' }}
+            </span>
+            <button class="remove-btn hover-lift" (click)="retirerItem(item.box.id)">
+              🗑️
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions du panier -->
+    <div class="panier-actions animate-fade-up delay-200">
+      <button class="btn-secondary hover-lift" (click)="viderPanier()">
+        Vider le panier
+      </button>
+
+      <div class="total-section">
+        <h3 class="total-label">Total : {{ total | currency:'EUR' }}</h3>
+        <button class="btn-primary hover-lift" (click)="passerCommande()">
+          Passer la commande
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,138 @@
+<div class="container profil-page">
+
+  <div class="profile-header animate-fade-down" *ngIf="currentUser">
+    <div class="profile-avatar animate-scale-in delay-200">
+      {{ currentUser.firstname.charAt(0) }}{{ currentUser.lastname.charAt(0) }}
+    </div>
+    <!-- ... info ... -->
+    <div class="profile-info">
+      <h1>{{ currentUser.firstname }} {{ currentUser.lastname }}</h1>
+      <p class="email">{{ currentUser.email }}</p>
+
+      <p class="meta" *ngIf="currentUser.ville || currentUser.code_postal || currentUser.age">
+        <span *ngIf="currentUser.age">{{ currentUser.age }} ans</span>
+        <span *ngIf="currentUser.age && (currentUser.ville || currentUser.code_postal)"> | </span>
+        <span *ngIf="currentUser.ville">{{ currentUser.ville }}</span>
+        <span *ngIf="currentUser.code_postal"> ({{ currentUser.code_postal }})</span>
+      </p>
+
+      <div class="badges">
+        <span class="badge admin" *ngIf="currentUser.role === 'admin'">Administrateur</span>
+        <span class="badge student" *ngIf="currentUser.status === 'student'">🎓 Étudiant (-10%)</span>
+      </div>
+
+    </div>
+
+    <div class="profile-actions">
+      <button class="btn-secondary hover-lift" (click)="openEditModal()">Modifier</button>
+      <button class="logout-btn hover-lift" (click)="logout()">Déconnexion</button>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="section-title animate-fade-up delay-200">Mon historique de commandes</h2>
+
+  <div *ngIf="loadingHistory" class="loading">Chargement...</div>
+
+  <div *ngIf="!loadingHistory && commandes.length === 0" class="empty-state animate-fade-up delay-300">
+    <p>Aucune commande pour l'instant.</p>
+  </div>
+
+  <div class="orders-list animate-fade-up delay-300" *ngIf="commandes.length > 0">
+
+    <div *ngFor="let order of (showAllOrders ? commandes : commandes.slice(0, 3)); let i = index" class="order-card">
+      <div class="order-header">
+        <span class="date">{{ order.date | date:'dd/MM/yyyy à HH:mm' }}</span>
+        <span class="status" [class]="order.status">{{ getStatusLabel(order.status) }}</span>
+      </div>
+
+      <div class="order-content">
+        <p *ngFor="let item of order.items">
+          {{ item.quantity }}x {{ item.box_name }}
+        </p>
+      </div>
+
+      <div class="order-total">
+        Total : {{ order.total | currency:'EUR' }} </div>
+    </div>
+
+    <div class="toggle-container" *ngIf="commandes.length > 3">
+      <button class="toggle-btn" (click)="toggleHistory()">
+        <span *ngIf="!showAllOrders">Voir tout l'historique ▼</span>
+        <span *ngIf="showAllOrders">Voir moins ▲</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" *ngIf="showEditModal" (click)="closeEditModal()">
+    <div class="modal-content edit-modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Modifier mon profil</h2>
+        <button class="close-btn-simple" (click)="closeEditModal()">&times;</button>
+      </div>
+
+      <form [formGroup]="editForm" (ngSubmit)="saveProfile()">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Prénom</label>
+            <input type="text" formControlName="firstname" class="form-control">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nom</label>
+            <input type="text" formControlName="lastname" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" formControlName="email" class="form-control">
+        </div>
+
+        <div class="form-row three-cols">
+          <div class="form-group">
+            <label class="form-label">Age</label>
+            <input type="number" formControlName="age" class="form-control" placeholder="Optionnel">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ville</label>
+            <input type="text" formControlName="ville" class="form-control" placeholder="Optionnel">
+          </div>
+          <div class="form-group">
+            <label class="form-label">CP</label>
+            <input type="text" formControlName="code_postal" class="form-control" placeholder="Optionnel">
+          </div>
+        </div>
+
+        <div class="divider-small"></div>
+
+        <div class="form-group">
+          <label class="form-label">Nouveau mot de passe (Optionnel)</label>
+          <input type="password" formControlName="password" class="form-control" placeholder="Laisser vide si inchangé">
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="closeEditModal()">Annuler</button>
+          <button type="submit" class="btn-primary" [disabled]="editForm.invalid">Sauvegarder</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" *ngIf="showSuccessModal" (click)="closeSuccessModal()">
+    <div class="modal-content success-modal" (click)="$event.stopPropagation()">
+      <div class="modal-header success-header">
+        <h2>Succès !</h2>
+        <button class="close-btn-simple" (click)="closeSuccessModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Votre profil a été mis à jour avec succès.</p>
+        <p>Les modifications sont maintenant enregistrées.</p>
+        <div class="modal-actions center">
+          <button class="btn-primary" (click)="closeSuccessModal()">Terminer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<header class="header">
+  <div class="container header-content">
+
+    <!-- LEFT: Logo -->
+    <a routerLink="/" class="logo">
+      <img src="assets/images/logo.png" alt="OISHI" class="logo-img" *ngIf="false"> <!-- Placeholder if needed -->
+      OISHI
+    </a>
+
+    <!-- CENTER: Pill Navigation -->
+    <nav class="nav-center">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+        À Propos
+      </a>
+
+      <a routerLink="/menu" routerLinkActive="active" class="nav-link">
+        Menus
+      </a>
+
+      <a routerLink="/tendances" routerLinkActive="active" class="nav-link">
+        Tendances
+      </a>
+
+      <a *ngIf="isAdmin" routerLink="/admin" routerLinkActive="active" class="nav-link admin-link">
+        Dashboard
+      </a>
+    </nav>
+
+    <!-- RIGHT: Icons (Search, Cart, User) -->
+    <div class="nav-right">
+
+      <!-- Search (Visual Only - kept simplified or hidden if no logic exists, omitting to strictly follow 'no functional change') -->
+      <!-- <button class="icon-btn search-btn">🔍</button> -->
+
+      <a routerLink="/panier" routerLinkActive="active" class="icon-link cart-link" title="Mon Panier">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="badge" *ngIf="nombreItems > 0">{{ nombreItems }}</span>
+      </a>
+
+      <div *ngIf="isLoggedIn" class="user-menu">
+        <a routerLink="/profil" class="icon-link user-link" title="Mon Espace">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
+
+      <div *ngIf="!isLoggedIn" class="auth-links">
+        <a routerLink="/login" class="nav-link login-btn">Connexion</a>
+      </div>
+
+    </div>
+
+  </div>
+</header>

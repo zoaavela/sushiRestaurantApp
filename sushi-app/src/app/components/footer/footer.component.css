@@ -1,0 +1,72 @@
+/* --- FOOTER LUXE --- */
+.footer {
+  background-color: #050505;
+  /* Noir Profond */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  /* Ligne très fine */
+  padding: 6rem 0 3rem;
+  margin-top: 6rem;
+  color: #888;
+  font-family: var(--font-body);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.footer-section h3 {
+  color: #fff;
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 40px;
+  height: 1px;
+  /* Ligne plus fine */
+  background-color: #fff;
+  /* Blanc chic au lieu de rouge */
+  transition: width 0.3s ease;
+}
+
+.footer-section:hover h3::after {
+  width: 100%;
+  /* Petit effet interactif */
+}
+
+.footer-section p {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #aaa;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #555;
+}
+
+.footer-bottom a {
+  color: #777;
+  transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+  color: #fff;
+}

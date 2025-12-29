@@ -1,0 +1,37 @@
+<div class="container trends-container">
+  <div class="trends-header">
+    <span class="subtitle">LES TENDANCES</span>
+    <h1 class="page-title">Communauté</h1>
+  </div>
+
+  <div *ngIf="!loading && stats">
+    
+    <div class="big-stat-wrapper">
+      <div class="big-number">{{ stats.global_pieces | number }}</div>
+      <div class="big-label">Sushis dévorés cette année</div>
+      <div class="divider-small"></div>
+    </div>
+
+    <h2 class="section-title">Les Boxes Favorites</h2>
+    <div class="podium-grid">
+      <div class="podium-card" *ngFor="let box of stats.top_products; let i = index" [class.winner]="i === 0">
+        <div class="card-inner">
+          <div class="rank">0{{ i + 1 }}</div>
+          <div class="img-container">
+            <img [src]="'assets/images/' + box.image + '.jpg'" class="podium-img">
+          </div>
+          <div class="info">
+            <h3>{{ box.name }}</h3>
+            <p>{{ box.total_sold }} commandes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Où sont nos clients ?</h2>
+    <div class="map-border">
+      <div id="map"></div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="register-card">
+    <h1 class="page-title">Inscription</h1>
+    
+    <div *ngIf="success" class="alert alert-success">
+      Inscription réussie ! Redirection vers la connexion...
+    </div>
+
+    <form *ngIf="!success" [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      
+      <div class="form-group">
+        <label class="form-label">Prénom</label>
+        <input type="text" class="form-control" formControlName="firstname"
+               [class.error]="registerForm.get('firstname')?.invalid && registerForm.get('firstname')?.touched">
+        <div class="error-message" 
+             *ngIf="registerForm.get('firstname')?.invalid && registerForm.get('firstname')?.touched">
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Nom</label>
+        <input type="text" class="form-control" formControlName="lastname"
+               [class.error]="registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched">
+        <div class="error-message"
+             *ngIf="registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched">
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" formControlName="email"
+               placeholder="votre@email.com"
+               [class.error]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        <div class="error-message"
+             *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+          </div>
+      </div>
+      
+      <div class="form-row three-cols">
+          <div class="form-group">
+            <label class="form-label">Age</label>
+            <input type="number" class="form-control" formControlName="age">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ville</label>
+            <input type="text" class="form-control" formControlName="ville">
+          </div>
+          <div class="form-group">
+            <label class="form-label">CP</label>
+            <input type="text" class="form-control" formControlName="code_postal">
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Mot de passe</label>
+        <input type="password" class="form-control" formControlName="password"
+               [class.error]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        <div class="error-message"
+             *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Confirmer le mot de passe</label>
+        <input type="password" class="form-control" formControlName="confirmPassword"
+               [class.error]="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+        <div class="error-message"
+             *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+          </div>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label class="checkbox-container">
+          <input type="checkbox" formControlName="isStudent">
+          <span class="checkmark"></span>
+          <span class="checkbox-label">Je suis étudiant (Bénéficiez de -10%) 🎓</span>
+        </label>
+      </div>
+
+      <div *ngIf="error" class="alert alert-error">
+        {{ error }}
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="registerForm.invalid || loading">
+        <span *ngIf="loading" class="spinner"></span>
+        {{ loading ? 'Inscription...' : 'S\'inscrire' }}
+      </button>
+
+      <div class="auth-links">
+        <p>Déjà un compte ? <a routerLink="/login" class="link">Se connecter</a></p>
+      </div>
+    </form>
+  </div>
+</div>

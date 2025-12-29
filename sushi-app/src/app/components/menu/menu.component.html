@@ -1,0 +1,140 @@
+<div class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <span class="hero-subtitle animate-fade-up">L'ART DU SUSHI</span>
+    <h1 class="hero-title animate-fade-up delay-100">Découvrez les saveurs<br>les plus raffinées du<br>Japon !</h1>
+  </div>
+</div>
+
+<div class="container menu-container">
+
+  <div class="toolbar animate-fade-down delay-200">
+    <button class="filter-btn hover-lift" [class.active]="showFavoritesOnly" (click)="toggleFavoriteFilter()">
+      ❤️ Mes Favoris <span *ngIf="showFavoritesOnly" style="margin-left:5px">(Activé)</span>
+    </button>
+    <button class="filter-btn primary-filter hover-lift" (click)="toggleFilterModal()">
+      ⚙️ Filtrer & Trier
+      <span class="filter-dot" *ngIf="selectedFlavors.size > 0 || currentSort !== 'default'"></span>
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Chargement...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error" class="boxes-grid">
+    <div *ngFor="let box of filteredBoxes" class="box-card" (click)="openModal(box)">
+      <div class="card-image-wrapper">
+        <img [src]="'assets/images/' + box.image + '.jpg'" [alt]="box.name" class="box-image">
+        <button class="fav-btn" [class.active]="isFavorite(box.id)" (click)="toggleFavorite(box, $event)">♥</button>
+      </div>
+      <div class="box-content">
+        <div class="box-header">
+          <h3 class="box-title">{{ box.name }}</h3>
+          <span class="box-price">{{ box.price | currency:'EUR' }}</span>
+        </div>
+        <p class="box-pieces">{{ box.pieces }} pièces</p>
+        <button class="add-button-simple" [class.success]="isAdded(box.id)" (click)="ajouterAuPanier(box, $event)">
+          <span *ngIf="!isAdded(box.id)">Ajouter +</span>
+          <span *ngIf="isAdded(box.id)">Ajouté</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="filteredBoxes.length === 0 && !loading" class="empty-favorites">
+    <p>Aucune box ne correspond à vos critères.</p>
+    <button (click)="resetFilters()" class="btn-link">Réinitialiser les filtres</button>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="selectedBox" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeModal()">✕</button>
+    <div class="modal-header">
+      <img [src]="'assets/images/' + selectedBox.image + '.jpg'" [alt]="selectedBox.name" class="modal-image">
+    </div>
+    <div class="modal-body">
+      <h2>{{ selectedBox.name }}</h2>
+      <p class="modal-pieces">{{ selectedBox.pieces }} pièces</p>
+      <p class="modal-price">{{ selectedBox.price | currency:'EUR' }}</p>
+      <div class="divider"></div>
+
+      <div class="modal-section">
+        <h3>Composition</h3>
+        <ul class="food-list">
+          <li *ngFor="let food of selectedBox.foods"><span class="qty">{{ food.quantity }}x</span> {{ food.name }}</li>
+        </ul>
+      </div>
+
+      <div class="modal-section" *ngIf="selectedBox.flavors?.length">
+        <h3>Saveurs</h3>
+        <div class="flavors-list">
+          <span *ngFor="let flavor of selectedBox.flavors" class="flavor-tag">{{ flavor }}</span>
+        </div>
+      </div>
+
+      <button class="modal-add-btn" [class.success]="isAdded(selectedBox.id)"
+        (click)="ajouterAuPanier(selectedBox); closeModal()">
+        <span *ngIf="!isAdded(selectedBox.id)">Ajouter au panier</span>
+        <span *ngIf="isAdded(selectedBox.id)">✅ Ajouté !</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay filter-overlay" *ngIf="showFilterModal" (click)="toggleFilterModal()">
+  <div class="modal-content filter-modal" (click)="$event.stopPropagation()">
+
+    <div class="filter-header">
+      <h2>Filtres & Tri</h2>
+      <button class="close-btn-simple" (click)="toggleFilterModal()">✕</button>
+    </div>
+
+    <div class="filter-body-content">
+      <div class="filter-section">
+        <h3>Trier par</h3>
+        <div class="sort-options">
+          <button class="sort-btn" [class.active]="currentSort === 'default'" (click)="setSort('default')">Par
+            défaut</button>
+          <button class="sort-btn" [class.active]="currentSort === 'price_asc'" (click)="setSort('price_asc')">Prix
+            croissant</button>
+          <button class="sort-btn" [class.active]="currentSort === 'price_desc'" (click)="setSort('price_desc')">Prix
+            décroissant</button>
+          <button class="sort-btn" [class.active]="currentSort === 'name'" (click)="setSort('name')">Nom (A-Z)</button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="filter-section">
+        <div class="flavor-header">
+          <h3>Saveurs</h3>
+          <div class="mode-switch">
+            <button class="mode-btn" [class.active]="filterMode === 'OR'" (click)="setFilterMode('OR')">Au moins
+              une</button>
+            <button class="mode-btn" [class.active]="filterMode === 'AND'"
+              (click)="setFilterMode('AND')">Toutes</button>
+          </div>
+        </div>
+
+        <p class="filter-help" *ngIf="filterMode === 'OR'">Affiche les box contenant <strong>au moins un</strong> de ces
+          ingrédients :</p>
+        <p class="filter-help" *ngIf="filterMode === 'AND'">Affiche les box contenant <strong>impérativement
+            tous</strong> ces ingrédients :</p>
+
+        <div class="flavors-grid">
+          <button *ngFor="let flavor of allFlavors" class="flavor-chip" [class.selected]="selectedFlavors.has(flavor)"
+            (click)="toggleFlavorFilter(flavor)">
+            {{ flavor }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-footer">
+      <button class="reset-btn" (click)="resetFilters()">Tout effacer</button>
+      <button class="apply-btn" (click)="toggleFilterModal()">Voir les résultats</button>
+    </div>
+
+  </div>
+</div>

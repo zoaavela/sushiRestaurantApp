@@ -1,0 +1,428 @@
+/* --- 1. HERO SECTION (Intro) --- */
+/* --- 1. HERO SECTION (Intro) --- */
+.hero {
+  position: relative;
+  height: 100vh;
+  /* Plein écran total */
+  width: 100%;
+  margin-top: -130px;
+  /* Sync avec le padding global */
+
+  /* Image de fond */
+  background-image: url('../../../assets/images/story.jpg');
+  background-size: cover;
+  background-position: center;
+  /* background-attachment: fixed; -> Peut causer des soucis sur mobile, on enlève pour plus de fluidité */
+  display: flex;
+  align-items: center;
+  /* Centré verticalement */
+  justify-content: flex-start;
+  /* Aligné à gauche */
+  margin-bottom: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0) 100%);
+  /* Dégradé gauche -> droite pour laisser respirer l'image à droite */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 4rem;
+  /* Marge interne */
+  text-align: left;
+  /* Alignement gauche strict */
+  max-width: 800px;
+}
+
+.hero-tag {
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 3px;
+  font-weight: 400;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  padding-left: 15px;
+  /* Ligne verticale décorative à gauche */
+}
+
+.hero-title {
+  font-size: 5rem;
+  line-height: 1;
+  color: white;
+  margin-bottom: 2rem;
+  font-family: var(--font-body);
+  /* Change to sans serif for cleaner look if desired, or keep title font */
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  max-width: 500px;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.hero-btn {
+  padding: 16px 45px;
+  font-size: 0.9rem;
+  background-color: white;
+  color: black;
+  border-radius: 50px;
+  /* Bouton rond */
+  letter-spacing: 1px;
+}
+
+.hero-btn:hover {
+  background-color: var(--accent);
+  /* Rouge */
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* --- PROMO BANNER --- */
+.promo-banner {
+  background: #111;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ... (Reste inchangé) ... */
+.promo-content {
+  /* ... */
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.promo-icon {
+  font-size: 1.2rem;
+}
+
+.promo-text .code {
+  border-color: #555;
+}
+
+/* Correction padding section */
+.section {
+  padding: 8rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 5rem;
+  color: var(--text-main);
+  font-family: var(--font-title);
+  font-weight: 400;
+}
+
+/* --- 3. CONCEPT (Icônes) --- */
+.concept-section {
+  background-color: var(--bg-dark);
+  border-bottom: 1px solid var(--border);
+}
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 4rem;
+  text-align: left;
+  /* Align Left is more modern */
+}
+
+.concept-item .icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  color: var(--accent);
+}
+
+.concept-item h3 {
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- 4. BEST SELLERS (Incontournables) --- */
+.featured-section {
+  background-color: var(--bg-dark);
+}
+
+.boxes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.box-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  /* Plus carré pour le coté pro */
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.box-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.image-wrapper {
+  height: 250px;
+  /* Plus grand */
+  overflow: hidden;
+  position: relative;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  opacity: 0.85;
+}
+
+.box-card:hover img {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.box-info {
+  padding: 1.5rem;
+}
+
+.box-info h3 {
+  font-size: 1.2rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.pieces {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.box-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.price {
+  font-weight: 400;
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+/* BOUTON D'AJOUT (Minimaliste) */
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.btn-icon:hover {
+  background: white;
+  border-color: white;
+  color: black;
+  transform: scale(1.1);
+}
+
+/* ÉTAT SUCCÈS (Vert discret ou Blanc plein) */
+.btn-icon.success {
+  background-color: var(--accent);
+  /* Rouge subtil ou vert */
+  border-color: var(--accent);
+  color: white;
+  transform: scale(1);
+}
+
+.link-more {
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  transition: 0.3s;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 5px;
+}
+
+.link-more:hover {
+  color: white;
+  border-bottom-color: white;
+}
+
+/* --- 5. À PROPOS --- */
+.about-section {
+  background-color: var(--bg-card);
+  border: none;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.about-text h2 {
+  font-size: 3.5rem;
+  margin: 0 0 2.5rem;
+  font-family: var(--font-title);
+  line-height: 1.1;
+  color: var(--text-main);
+}
+
+.about-text p {
+  color: #bbbbbb;
+  margin-bottom: 1.5rem;
+  line-height: 1.9;
+  font-size: 1rem;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: -20px 20px 0 rgba(255, 255, 255, 0.05);
+  /* Ombre subtile */
+}
+
+/* --- 6. CONTACT --- */
+.contact-section {
+  background-color: var(--bg-dark);
+}
+
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  background-color: var(--bg-card);
+  padding: 4rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.contact-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-title);
+}
+
+.contact-info p {
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.info-item {
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.full-width {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .about-grid,
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 2rem;
+  }
+
+  .about-image {
+    order: -1;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+}

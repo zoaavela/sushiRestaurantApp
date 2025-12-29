@@ -1,0 +1,121 @@
+<div class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <span class="hero-tag animate-fade-left">CUISINE JAPONAISE PREMIUM</span>
+    <h1 class="hero-title animate-fade-left delay-100">L'Excellence du Sushi<br>à emporter.</h1>
+    <p class="hero-desc animate-fade-left delay-200">Des produits frais, préparés à la minute par nos maîtres sushis.
+    </p>
+    <a routerLink="/menu" class="btn-primary hero-btn animate-fade-up delay-300">Voir la Carte</a>
+  </div>
+</div>
+
+<div class="promo-banner">
+  <div class="container promo-content">
+    <span class="promo-icon">🎁</span>
+    <span class="promo-text">Profitez de <strong>-20%</strong> sur votre commande avec le code <span
+        class="code">OISHI2026</span> !</span>
+  </div>
+</div>
+
+<section class="section concept-section">
+  <div class="container">
+    <div class="concept-grid">
+      <div class="concept-item animate-scale-in delay-100">
+        <div class="icon">🍣</div>
+        <h3>Frais & Fait Maison</h3>
+        <p>Nos chefs préparent vos sushis à la commande pour une fraîcheur absolue.</p>
+      </div>
+      <div class="concept-item animate-scale-in delay-200">
+        <div class="icon">⏱️</div>
+        <h3>Click & Collect</h3>
+        <p>Commandez en ligne tranquillement, nous préparons tout pour votre arrivée.</p>
+      </div>
+      <div class="concept-item animate-scale-in delay-300">
+        <div class="icon">🌿</div>
+        <h3>Responsable</h3>
+        <p>Des produits sélectionnés avec soin et des emballages éco-responsables.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section featured-section">
+  <div class="container">
+    <h2 class="section-title">Nos Incontournables</h2>
+
+    <div class="boxes-grid" *ngIf="!loading">
+      <div *ngFor="let box of featuredBoxes" class="box-card">
+        <div class="image-wrapper">
+          <img [src]="'assets/images/' + box.image + '.jpg'" [alt]="box.name">
+        </div>
+        <div class="box-info">
+          <h3>{{ box.name }}</h3>
+          <p class="pieces">{{ box.pieces }} pièces</p>
+          <div class="box-action">
+            <span class="price">{{ box.price | currency:'EUR' }}</span>
+
+            <button class="btn-icon" [class.success]="isAdded(box.id)" (click)="addToCart(box)">
+
+              <span *ngIf="!isAdded(box.id)">➕</span>
+
+              <span *ngIf="isAdded(box.id)">✅</span>
+
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top: 3rem;">
+      <a routerLink="/menu" class="link-more">Découvrir toute la carte →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section about-section">
+  <div class="container about-grid">
+    <div class="about-text">
+      <span class="subtitle">NOTRE HISTOIRE</span>
+      <h2>La passion du geste</h2>
+      <p>
+        Chez OISHI, nous croyons que le sushi est un art. Depuis 2015, nous nous efforçons de proposer une expérience
+        gustative unique, alliant tradition japonaise et créativité moderne.
+      </p>
+      <p>
+        Pas de stock dormant : chaque grain de riz est assaisonné le matin même, chaque poisson est découpé avec
+        précision juste avant d'être servi.
+      </p>
+    </div>
+    <div class="about-image">
+      <img src="assets/images/accueil.jpg" alt="Chef Sushi">
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section">
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h2>Nous contacter</h2>
+        <p>Une question ? Une demande traiteur ?</p>
+        <div class="info-item">📍 17 Rue Jablinot, 77910 Meaux</div>
+        <div class="info-item">📞 01 23 45 67 89</div>
+        <div class="info-item">✉️ contact&#64;oishi.fr</div>
+      </div>
+
+      <form [formGroup]="contactForm" (ngSubmit)="sendContact()" class="contact-form">
+        <div class="form-group">
+          <input type="text" formControlName="name" placeholder="Votre Nom" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="email" formControlName="email" placeholder="Votre Email" class="form-control">
+        </div>
+        <div class="form-group">
+          <textarea formControlName="message" rows="4" placeholder="Votre Message" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn-primary full-width" [disabled]="contactForm.invalid">Envoyer le
+          message</button>
+      </form>
+    </div>
+  </div>
+</section>

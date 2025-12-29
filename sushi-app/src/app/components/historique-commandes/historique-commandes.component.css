@@ -1,0 +1,44 @@
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.page-title { text-align: center; margin-bottom: 2rem; color: #333; }
+.empty-state { text-align: center; padding: 3rem; background: #fff; border-radius: 8px; }
+
+.orders-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.order-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+.order-header {
+  background: #f8f9fa;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.order-date { font-weight: 600; color: #333; margin-right: 10px; }
+.order-id { color: #888; font-size: 0.9rem; }
+
+/* Statuts */
+.order-status { padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 500; }
+.order-status.paid, .order-status.completed { background: #d4edda; color: #155724; }
+.order-status.en_attente, .order-status.pending { background: #fff3cd; color: #856404; }
+.order-status.cancelled { background: #f8d7da; color: #721c24; }
+
+.order-items { padding: 1rem; }
+.item-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: #555; }
+
+.order-footer {
+  padding: 1rem;
+  background: #fff;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+}
+.total-price { color: #dc3545; }

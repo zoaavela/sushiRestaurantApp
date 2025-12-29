@@ -1,0 +1,479 @@
+/* --- LAYOUT GLOBAL --- */
+.page-title {
+  margin-bottom: 2rem;
+}
+
+.commande-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* 2/3 pour le formulaire, 1/3 pour le panier */
+  gap: 2rem;
+}
+
+/* --- CARTES (Formulaire & Récap) --- */
+.form-section,
+.summary-section {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.form-header,
+.summary-header {
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.form-header h2,
+.summary-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  /* font-family: var(--font-title); */
+  /* Enlevé si non défini */
+}
+
+.form-body,
+.summary-body {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* --- CHAMPS DE SAISIE & ERREURS --- */
+.error-message {
+  color: #ff4444;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.form-control.error {
+  border-color: #ff4444;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* --- ALERTE ÉTUDIANT --- */
+.student-alert {
+  background-color: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  color: #ffd54f;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.alert-icon {
+  font-size: 1.5rem;
+}
+
+.alert-content strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #ffecb3;
+}
+
+.alert-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* --- LISTE PANIER --- */
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.item-name {
+  display: block;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.item-quantity {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.item-price {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* --- NOUVEAU: STYLES CODE PROMO DANS LE RÉCAPITULATIF --- */
+.promo-box {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.input-with-button {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.input-with-button .form-control {
+  flex-grow: 1;
+  padding: 8px 12px;
+  /* Ajuster la taille pour le bouton */
+  height: 38px;
+}
+
+.btn-primary-small {
+  padding: 0 15px;
+  height: 38px;
+  /* Aligner sur l'input */
+  flex-shrink: 0;
+  /* Style de bouton de base (vous pouvez ajuster selon vos variables globales) */
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary-small:hover {
+  background: #e53935;
+}
+
+.promo-group {
+  margin-bottom: 0.5rem;
+}
+
+.promo-success {
+  color: #4CAF50;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.promo-error {
+  color: #FF5722;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* --- FIN STYLES PROMO --- */
+
+
+/* --- TOTAUX --- */
+.summary-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--border);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.summary-row.discount {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.summary-row.promo-row {
+  color: #4CAF50;
+  /* Vert pour la remise promo */
+  font-weight: 600;
+}
+
+.summary-row.total {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+  color: var(--text-main);
+  font-size: 1.2rem;
+}
+
+.total-amount {
+  color: var(--primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.payment-info {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+/* --- BOUTON DE SOUMISSION --- */
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 1.5rem;
+  background: var(--primary);
+  color: var(--bg-dark);
+  /* Noir pour contraste sur fond blanc */
+  border: none;
+  border-radius: 50px;
+  /* Plus rond comme le reste */
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.submit-button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   MODALE DE SUCCÈS (Le reste du CSS modale est inchangé)
+   ========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.modal-content.success-modal {
+  background-color: #121212;
+  border: 1px solid var(--primary);
+  padding: 3rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 0 60px rgba(211, 47, 47, 0.3);
+  animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  color: var(--text-main);
+  position: relative;
+  z-index: 100000;
+}
+
+.modal-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+.success-modal h2 {
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.success-msg {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.modal-recap {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.modal-recap h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.recap-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.modal-total {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-total strong {
+  color: var(--primary);
+  font-size: 1.3rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .commande-content {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-section {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+
+  /* --- MODALE D'ERREUR --- */
+  .error-modal {
+    background-color: #121212;
+    border: 1px solid #d32f2f;
+    /* Rouge */
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 0 60px rgba(211, 47, 47, 0.3);
+    animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    color: white;
+  }
+
+  .error-icon {
+    color: #ff5252;
+    animation: none;
+    /* Pas de rebond pour l'erreur */
+    filter: drop-shadow(0 0 10px rgba(255, 82, 82, 0.5));
+  }
+
+  .error-msg {
+    color: #ff8a80;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .btn-error {
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .btn-error:hover {
+    background: #b71c1c;
+  }
+
+  @keyframes shake {
+
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+}

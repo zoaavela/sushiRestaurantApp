@@ -1,0 +1,478 @@
+/* DANS src/app/components/profil/profil.component.css */
+
+.profil-page {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding-bottom: 4rem;
+}
+
+/* VARIABLES GLOBALES (Ajoutées si elles manquaient) */
+:root {
+  --primary: #d32f2f;
+  /* Exemple de rouge sushi */
+  --text-main: #f5f5f5;
+  --text-muted: #aaaaaa;
+  --bg-card: #282828;
+  --bg-input: #1e1e1e;
+  --border: #383838;
+}
+
+/* HEADER PROFIL */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  border-radius: 12px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  background: var(--text-main);
+  /* Fond Blanc */
+  color: var(--bg-dark);
+  /* Texte Noir (Initials) */
+  border-radius: 50%;
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  /* Glow blanc */
+  border: 2px solid var(--border);
+}
+
+/* ... */
+
+
+
+.profile-info {
+  flex-grow: 1;
+}
+
+.profile-info h1 {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 2rem;
+}
+
+.email {
+  color: var(--text-muted);
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+.meta {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.badges {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge.admin {
+  background: #555;
+  color: white;
+}
+
+.badge.student {
+  background: rgba(0, 188, 212, 0.1);
+  color: #00bcd4;
+  border: 1px solid #00bcd4;
+}
+
+/* --- Styles pour les statistiques utilisateur --- */
+.stats-box {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.stat-label {
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+
+/* BOUTONS ACTIONS */
+.profile-actions {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  align-items: center;
+}
+
+/* Style du bouton "Modifier" (btn-secondary) */
+/* Style du bouton "Modifier" (btn-secondary) */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  /* Fond léger */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--text-main);
+  /* Blanc */
+  padding: 8px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-main);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Le bouton Déconnexion */
+/* Le bouton Déconnexion */
+.logout-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--text-main);
+  padding: 8px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.logout-btn:hover {
+  background: var(--text-main);
+  color: var(--bg-dark);
+  border-color: var(--text-main);
+  transform: translateY(-2px);
+}
+
+
+/* --- HISTORIQUE --- */
+.divider {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-title {
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+}
+
+.orders-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.order-card {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.order-content {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.order-total {
+  text-align: right;
+  font-weight: bold;
+  color: var(--primary);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+
+/* Styles de statut */
+.status {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status.paid {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+}
+
+.status.on_site_payment {
+  background: rgba(255, 193, 7, 0.1);
+  color: #FFC107;
+}
+
+.status.pending {
+  background: rgba(255, 87, 34, 0.1);
+  color: #FF5722;
+}
+
+.status.completed {
+  background: rgba(3, 169, 244, 0.1);
+  color: #03A9F4;
+}
+
+.status.cancelled {
+  background: rgba(158, 158, 158, 0.1);
+  color: #9E9E9E;
+}
+
+.toggle-container {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.toggle-btn:hover {
+  color: var(--primary);
+}
+
+
+/* --- MODALE GÉNÉRALE (EDITION & SUCCÈS) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: var(--bg-card);
+  width: 90%;
+  max-width: 600px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 2001;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
+
+.close-btn-simple {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn-simple:hover {
+  color: var(--primary);
+}
+
+/* --- STYLES FORMULAIRE --- */
+.edit-modal form {
+  padding: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  border-radius: 4px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-row.three-cols {
+  grid-template-columns: 80px 1fr 100px;
+}
+
+.divider-small {
+  height: 1px;
+  background: var(--border);
+  margin: 2rem 0;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.modal-actions.center {
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.btn-primary {
+  background: var(--text-main);
+  /* Blanc */
+  color: var(--bg-dark);
+  /* Noir */
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover:not([disabled]) {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary[disabled] {
+  background: #333;
+  color: #777;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.btn-cancel:hover {
+  border-color: var(--text-main);
+  color: var(--text-main);
+}
+
+/* --- STYLES SPECIFIQUES SUCCÈS --- */
+.modal-body {
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: var(--text-main);
+}
+
+.modal-body p {
+  margin-bottom: 0.5rem;
+}
+
+.success-header h2 {
+  color: #4CAF50;
+  /* Vert pour le succès */
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-actions {
+    margin-left: 0;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .form-row,
+  .form-row.three-cols {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
