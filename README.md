@@ -48,9 +48,8 @@ Le dossier API doit être servi par votre serveur local (Apache) pour traiter le
 
 ```
 .
-├── API/                     # Dossier Backend PHP (À DÉPLACER DANS HTDOCS)
-│   └── ...                  # Scripts de récupération et d'envoi de données
-├── sushi_app/               # Code source Angular (Composants, Services, Styles)
+├── sushi-app/               # Code source Angular (Composants, Services, Styles)
+├── API.zip                  # Dossier Backend PHP (À DÉPLACER DANS HTDOCS)
 ├── sushi_box.sql            # Script d'importation de la base de données MySQL
 ├── NOTE DE LANCEMENT.pdf    # Note de lancement du projet
 └── README.md                # Documentation
