@@ -1,10 +1,10 @@
-# Oishi - Borne de Commande Digitale
+# 🍣 Oishi
 
 **Oishi** est une application web de type "borne tactile" permettant aux clients de consulter le catalogue et de passer commande directement en restaurant. Le projet repose sur une architecture découplée utilisant **Angular** pour l'interface utilisateur et **PHP** pour la gestion des données et de l'API.
 
 ---
 
-## Technologies Utilisées
+## 🚀 Technologies Utilisées
 
 * **Frontend :** Angular (TypeScript, HTML, CSS)
 * **Backend :** PHP (API REST)
@@ -13,7 +13,7 @@
 
 ---
 
-## Protocole d'Installation
+## 🛠️ Protocole d'Installation
 
 Suivez rigoureusement ces étapes pour déployer le projet sur votre machine locale :
 
@@ -31,7 +31,7 @@ Le dossier API doit être servi par votre serveur local (Apache) pour traiter le
 3. Vérifiez que votre serveur Apache est bien activé.
 
 ### 3. Lancement du Frontend (Angular)
-1. Ouvrez un terminal dans le dossier racine du projet (là où se trouve le dossier `sushi_box/`).
+1. Ouvrez un terminal dans le dossier racine du projet (là où se trouve le dossier `src/` et le fichier `package.json`).
 2. Installez les dépendances Node.js :
    ```bash
    npm install
@@ -44,20 +44,21 @@ Le dossier API doit être servi par votre serveur local (Apache) pour traiter le
 
 ---
 
-## Arborescence du Projet
+## 📂 Arborescence du Projet
 
 ```
 .
-├── API/                 # Dossier Backend PHP (À DÉPLACER DANS HTDOCS)
-│   └── ...              # Scripts de récupération et d'envoi de données
-├── sushi_box/           # Code source Angular (Composants, Services, Styles)
-├── sushi_box.sql        # Script d'importation de la base de données MySQL
-└── README.md            # Documentation
+├── API/                     # Dossier Backend PHP (À DÉPLACER DANS HTDOCS)
+│   └── ...                  # Scripts de récupération et d'envoi de données
+├── sushi_app/               # Code source Angular (Composants, Services, Styles)
+├── sushi_box.sql            # Script d'importation de la base de données MySQL
+├── NOTE DE LANCEMENT.pdf    # Note de lancement du projet
+└── README.md                # Documentation
 ```
 
 ---
 
-## Fonctionnalités du Site
+## 📋 Fonctionnalités du Site
 
 * **Catalogue Dynamique :** Affichage des produits récupérés via l'API.
 * **Gestion du Panier :** Système d'ajout et de suppression d'articles avec calcul du total automatique.
