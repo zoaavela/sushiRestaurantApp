@@ -1,6 +1,6 @@
-# 🍣 Oishi
+# 🍣 Oishī
 
-**Oishi** est une application web de type "borne tactile" permettant aux clients de consulter le catalogue et de passer commande directement en restaurant. Le projet repose sur une architecture découplée utilisant **Angular** pour l'interface utilisateur et **PHP** pour la gestion des données et de l'API.
+**Oishī** est une application web de type "borne tactile" permettant aux clients de consulter le catalogue et de passer commande directement en restaurant. Le projet repose sur une architecture découplée utilisant **Angular** pour l'interface utilisateur et **PHP** pour la gestion des données et de l'API.
 
 ---
 
