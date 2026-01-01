@@ -24,10 +24,10 @@ Suivez rigoureusement ces étapes pour déployer le projet sur votre machine loc
 
 ### 2. Configuration du Backend (API PHP)
 Le dossier API doit être servi par votre serveur local (Apache) pour traiter les requêtes.
-1. Décompressez le fichier **`API.zip`** situé à la racine du projet.
-2. Déplacez ou copiez l'intégralité du dossier **`API/`** extrait dans le répertoire **htdocs** de votre installation :
-   * *Exemple Windows :* `C:\xampp\htdocs\API`
-   * *Exemple Mac :* `/Applications/MAMP/htdocs/API`
+1. Décompressez le fichier **`api.zip`** situé à la racine du projet.
+2. Déplacez ou copiez l'intégralité du dossier **`api`** extrait dans le répertoire **htdocs** de votre installation :
+   * *Exemple Windows :* `C:\xampp\htdocs\api`
+   * *Exemple Mac :* `/Applications/MAMP/htdocs/api`
 3. Vérifiez que votre serveur Apache est bien activé.
 
 ### 3. Lancement du Frontend (Angular)
