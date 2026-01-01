@@ -52,6 +52,7 @@ Le dossier API doit être servi par votre serveur local (Apache) pour traiter le
 ├── API.zip                  # Dossier Backend PHP (À DÉPLACER DANS HTDOCS)
 ├── sushi_box.sql            # Script d'importation de la base de données MySQL
 ├── NOTE DE LANCEMENT.pdf    # Note de lancement du projet
+├── rapport301-303.pdf       # Rapport final du projet
 └── README.md                # Documentation
 ```
 
