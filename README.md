@@ -57,12 +57,14 @@ Pour accéder à l'application, utilisez l'un des comptes suivants :
 
 ```
 .
-├── sushi-app/               # Code source Angular (Composants, Services, Styles)
-├── API.zip                  # Dossier Backend PHP (À DÉCOMPRESSER ET DÉPLACER DANS HTDOCS)
-├── sushi_box.sql            # Script d'importation de la base de données MySQL
-├── NOTE DE LANCEMENT.pdf    # Note de lancement du projet
-├── rapport301-303.pdf       # Rapport final du projet
-└── README.md                # Documentation
+├── docs/                           # Documentation du projet
+│   ├── charteGraphiqueOishi.pdf    # Charte graphique
+│   ├── noteLancementOishi.pdf      # Note de lancement
+│   └── rapportFinal.pdf            # Rapport final
+├── sushi-app/                      # Code source Angular
+├── README.md                       # Documentation
+├── api.zip			     # Dossier Backend PHP (À DÉCOMPRESSER ET DÉPLACER DANS HTDOCS)
+└── sushi_box.sql                   # Fichier BDD (À IMPORTER DANS UNE BASE DE DONNÉES)
 ```
 
 ---
