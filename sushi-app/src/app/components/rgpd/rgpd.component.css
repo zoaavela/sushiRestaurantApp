@@ -1,6 +1,6 @@
 /* --- LAYOUT GLOBAL --- */
 .rgpd-wrapper {
-  padding: 4rem 0 6rem; /* Marge en bas pour le footer */
+  padding: 4rem 0 6rem;
   min-height: 100vh;
 }
 
@@ -14,19 +14,19 @@
 
 /* GRILLE PRINCIPALE */
 .rgpd-layout {
-  display: flex; /* On utilise Flexbox au lieu de Grid pour plus de souplesse */
+  display: flex;
   gap: 3rem;
-  align-items: flex-start; /* Aligne le haut du menu et du contenu */
+  align-items: flex-start;
 }
 
 /* --- COLONNE GAUCHE (MENU) --- */
 .sidebar {
-  flex: 0 0 320px; /* Largeur fixe de 320px, ne rétrécit pas */
+  flex: 0 0 320px;
   background-color: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 8px;
-  overflow: hidden; /* Juste pour les coins arrondis */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-header {
@@ -38,7 +38,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   color: var(--text-muted);
-  background-color: rgba(255,255,255,0.02);
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 .rgpd-nav {
@@ -63,11 +63,11 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  border-bottom: 1px solid rgba(255,255,255,0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
 }
 
 .nav-item:hover {
-  background-color: rgba(255,255,255,0.05);
+  background-color: rgba(255, 255, 255, 0.05);
   color: var(--text-main);
   padding-left: 25px;
 }
@@ -87,126 +87,138 @@
 
 /* --- COLONNE DROITE (CONTENU) --- */
 .content-panel {
-  flex: 1; /* Prend tout l'espace restant */
+  flex: 1;
   background-color: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 4rem;
-  
-  /* C'est ICI l'astuce : Hauteur minimale pour éviter que la page ne saute */
-  min-height: 800px; 
-  
+
+  min-height: 800px;
+
   color: var(--text-main);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   position: relative;
 }
 
 /* STYLES DU TEXTE INJECTÉ */
 ::ng-deep .content-panel h3 {
-  font-size: 2.2rem; 
-  color: var(--text-main); 
+  font-size: 2.2rem;
+  color: var(--text-main);
   margin-top: 0;
   margin-bottom: 2rem;
-  font-family: var(--font-title); 
-  border-bottom: 1px solid var(--primary); 
-  padding-bottom: 1.5rem; 
+  font-family: var(--font-title);
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: 1.5rem;
   display: inline-block;
 }
 
-::ng-deep .content-panel h4 { 
-  font-size: 1.4rem; 
-  color: var(--primary); 
-  margin-top: 3rem; 
-  margin-bottom: 1rem; 
+::ng-deep .content-panel h4 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
   font-family: var(--font-title);
 }
 
-::ng-deep .content-panel p { 
-  color: #ccc; 
-  line-height: 1.8; 
-  margin-bottom: 1.5rem; 
+::ng-deep .content-panel p {
+  color: #ccc;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
   font-size: 1.05rem;
 }
 
-::ng-deep .content-panel ul { 
-  padding-left: 20px; 
-  margin-bottom: 2rem; 
-  color: #ccc; 
+::ng-deep .content-panel ul {
+  padding-left: 20px;
+  margin-bottom: 2rem;
+  color: #ccc;
 }
 
-::ng-deep .content-panel li { 
-  margin-bottom: 0.8rem; 
-  line-height: 1.6; 
+::ng-deep .content-panel li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
   list-style-type: square;
 }
-::ng-deep .content-panel li::marker { color: var(--primary); }
 
-::ng-deep .content-panel a { 
-  color: var(--primary); 
-  text-decoration: none; 
-  border-bottom: 1px dotted var(--primary); 
+::ng-deep .content-panel li::marker {
+  color: var(--primary);
+}
+
+::ng-deep .content-panel a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--primary);
   transition: 0.3s;
 }
-::ng-deep .content-panel a:hover { 
-  color: white; 
-  border-bottom-style: solid; 
+
+::ng-deep .content-panel a:hover {
+  color: white;
+  border-bottom-style: solid;
 }
 
 /* TABLEAUX PROPRES */
 ::ng-deep .rgpd-table {
-  width: 100%; 
-  border-collapse: collapse; 
+  width: 100%;
+  border-collapse: collapse;
   margin: 2rem 0;
-  background-color: var(--bg-input); 
-  border-radius: 4px; 
+  background-color: var(--bg-input);
+  border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--border);
 }
 
-::ng-deep .rgpd-table th { 
-  background-color: #252525; 
-  color: var(--primary); 
-  padding: 15px; 
-  text-align: left; 
-  text-transform: uppercase; 
-  font-size: 0.85rem; 
+::ng-deep .rgpd-table th {
+  background-color: #252525;
+  color: var(--primary);
+  padding: 15px;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.85rem;
   letter-spacing: 1px;
   border-bottom: 2px solid var(--border);
 }
 
-::ng-deep .rgpd-table td { 
-  padding: 15px; 
-  border-bottom: 1px solid var(--border); 
-  color: #ddd; 
-  vertical-align: top; 
+::ng-deep .rgpd-table td {
+  padding: 15px;
+  border-bottom: 1px solid var(--border);
+  color: #ddd;
+  vertical-align: top;
   font-size: 0.95rem;
 }
 
-::ng-deep .rgpd-table tr:last-child td { border-bottom: none; }
-
-/* ANIMATION FLUIDE */
-.content-fade { 
-  animation: fadeIn 0.5s ease; 
+::ng-deep .rgpd-table tr:last-child td {
+  border-bottom: none;
 }
 
-@keyframes fadeIn { 
-  from { opacity: 0; transform: translateY(10px); } 
-  to { opacity: 1; transform: translateY(0); } 
+/* ANIMATION FLUIDE */
+.content-fade {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* RESPONSIVE MOBILE */
 @media (max-width: 900px) {
-  .rgpd-layout { 
-    flex-direction: column; /* On empile sur mobile */
+  .rgpd-layout {
+    flex-direction: column;
   }
-  
-  .sidebar { 
+
+  .sidebar {
     width: 100%;
     flex: none;
-    margin-bottom: 2rem; 
+    margin-bottom: 2rem;
   }
-  
-  .content-panel { 
+
+  .content-panel {
     width: 100%;
     min-height: auto;
     padding: 2rem;

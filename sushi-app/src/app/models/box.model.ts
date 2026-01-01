@@ -6,11 +6,11 @@ export interface Food {
 export interface Box {
   id: number;
   name: string;
-  description?: string; // Rendre optionnel car pas dans votre JSON
-  pieces: number; // Ajouter ce champ qui existe dans votre JSON
+  description?: string;
+  pieces: number;
   price: number;
   image: string;
-  available: boolean; // On va le définir toujours à true
+  available: boolean;
   foods: Food[];
   flavors: string[];
 }

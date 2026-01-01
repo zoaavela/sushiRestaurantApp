@@ -1,4 +1,4 @@
-// DANS src/app/components/commande/commande.component.ts
+
 
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -142,7 +142,6 @@ export class CommandeComponent implements OnInit {
       this.apiService.creerCommande(commande).subscribe({
         next: (response: { order_id: number }) => {
 
-          // ÉTAPE 1: Mise à jour des statistiques utilisateur (ASYNCHRONE)
           this.authService.fetchUser().pipe(
             finalize(() => {
               this.submitting = false;
@@ -156,7 +155,6 @@ export class CommandeComponent implements OnInit {
             }
           });
 
-          // ÉTAPE 2: Affichage de la modale de succès
           this.confirmedOrderInfo = {
             id: response.order_id,
             items: [...this.panier],
@@ -171,7 +169,6 @@ export class CommandeComponent implements OnInit {
           console.error('Erreur commande:', error);
           let msg = error.error?.error || 'Erreur technique. Veuillez réessayer.';
 
-          // Si c'est une erreur liée au code promo (403 ou message spécifique)
           if (error.status === 403 || msg.includes('code promo')) {
             this.promoError = "Ce code promo a déjà été utilisé sur votre compte.";
           } else {

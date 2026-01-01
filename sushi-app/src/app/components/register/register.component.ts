@@ -28,12 +28,12 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]],
-      
-      // Nouveaux champs (Optionnels)
+
+
       age: [''],
       ville: [''],
       code_postal: [''],
-      
+
       isStudent: [false]
     }, { validators: this.passwordMatchValidator });
   }
@@ -41,13 +41,13 @@ export class RegisterComponent {
   passwordMatchValidator(form: FormGroup) {
     const password = form.get('password');
     const confirmPassword = form.get('confirmPassword');
-    
+
     if (password && confirmPassword && password.value !== confirmPassword.value) {
       confirmPassword.setErrors({ passwordMismatch: true });
     } else {
       confirmPassword?.setErrors(null);
     }
-    
+
     return null;
   }
 
@@ -58,14 +58,14 @@ export class RegisterComponent {
 
       const formValue = this.registerForm.value;
 
-      // Préparation des données pour l'API
+
       const userData = {
         firstname: formValue.firstname,
         lastname: formValue.lastname,
         email: formValue.email,
         password: formValue.password,
-        
-        // Nouveaux champs
+
+
         age: formValue.age || null,
         ville: formValue.ville || null,
         code_postal: formValue.code_postal || null,

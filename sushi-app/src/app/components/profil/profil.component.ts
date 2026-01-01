@@ -1,6 +1,6 @@
 // DANS src/app/components/profil/profil.component.ts
 
-import { Component, OnInit, OnDestroy } from '@angular/core'; 
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 import { ApiService } from '../../services/api.service';
 import { ToastService } from '../../services/toast.service';
 import { User } from '../../models/user.model';
-import { Subscription } from 'rxjs'; 
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profil',
@@ -23,12 +23,12 @@ export class ProfilComponent implements OnInit, OnDestroy {
   commandes: any[] = [];
   loadingHistory: boolean = true;
   showAllOrders: boolean = false;
-  
+
   showEditModal: boolean = false;
   editForm: FormGroup;
-  showSuccessModal: boolean = false; 
-  
-  private userSubscription!: Subscription; 
+  showSuccessModal: boolean = false;
+
+  private userSubscription!: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -49,26 +49,26 @@ export class ProfilComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Abonnement pour afficher les détails du profil
+
     this.userSubscription = this.authService.currentUser$.subscribe(user => {
-        this.currentUser = user;
-        if (user) {
-            this.patchFormValues(user);
-        }
+      this.currentUser = user;
+      if (user) {
+        this.patchFormValues(user);
+      }
     });
-    
-    // LOGIQUE SIMPLE : Charge l'historique au chargement du composant
+
+
     this.loadOrdersHistory();
   }
 
   ngOnDestroy(): void {
-      if (this.userSubscription) {
-          this.userSubscription.unsubscribe();
-      }
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
   loadOrdersHistory(): void {
-    this.loadingHistory = true; 
+    this.loadingHistory = true;
     this.apiService.getMesCommandes().subscribe({
       next: (data) => {
         this.commandes = data;
@@ -81,15 +81,15 @@ export class ProfilComponent implements OnInit, OnDestroy {
       }
     });
   }
-  
+
   patchFormValues(user: User): void {
-     this.editForm.patchValue({
-        firstname: user.firstname,
-        lastname: user.lastname,
-        email: user.email,
-        age: user.age,
-        ville: user.ville,
-        code_postal: user.code_postal,
+    this.editForm.patchValue({
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+      age: user.age,
+      ville: user.ville,
+      code_postal: user.code_postal,
     });
   }
 
@@ -100,18 +100,18 @@ export class ProfilComponent implements OnInit, OnDestroy {
   getStatusLabel(status: string): string {
     const statusMap: any = {
       'paid': 'Payée',
-      'on_site_payment': 'Paiement sur place', 
-      'pending': 'En attente', 
-      'completed': 'Terminée', 
+      'on_site_payment': 'Paiement sur place',
+      'pending': 'En attente',
+      'completed': 'Terminée',
       'cancelled': 'Annulée'
     };
     return statusMap[status] || status;
   }
-  
+
   toggleHistory(): void {
     this.showAllOrders = !this.showAllOrders;
   }
-  
+
   openEditModal(): void {
     if (this.currentUser) {
       this.showEditModal = true;
@@ -130,10 +130,10 @@ export class ProfilComponent implements OnInit, OnDestroy {
 
   closeEditModal(): void {
     this.showEditModal = false;
-    this.editForm.reset(); 
-    document.body.style.overflow = 'auto'; 
+    this.editForm.reset();
+    document.body.style.overflow = 'auto';
   }
-  
+
   closeSuccessModal(): void {
     this.showSuccessModal = false;
     document.body.style.overflow = 'auto';
@@ -142,33 +142,32 @@ export class ProfilComponent implements OnInit, OnDestroy {
   saveProfile(): void {
     if (this.editForm.valid && this.currentUser) {
       const data = this.editForm.value;
-      
+
       if (!data.password) {
         delete data.password;
       }
       data.age = data.age ? Number(data.age) : null;
-      data.code_postal = data.code_postal || null; 
-      data.ville = data.ville || null; 
-      
+      data.code_postal = data.code_postal || null;
+      data.ville = data.ville || null;
+
       this.apiService.updateProfile(data).subscribe({
         next: (response: any) => {
-          
-          this.closeEditModal(); 
-          
-          this.currentUser = response.user; 
-          this.authService.setUser(response.user); 
-          
+
+          this.closeEditModal();
+
+          this.currentUser = response.user;
+          this.authService.setUser(response.user);
+
           this.showSuccessModal = true;
           document.body.style.overflow = 'hidden';
-          
-          // Recharger l'historique après modification
-          this.loadOrdersHistory(); 
+
+          this.loadOrdersHistory();
 
         },
         error: (err) => {
           console.error('Erreur de mise à jour:', err);
-          this.closeEditModal(); 
-          
+          this.closeEditModal();
+
           let errorMessage = 'Veuillez vérifier vos informations.';
           if (err.error && err.error.error) {
             errorMessage = err.error.error;

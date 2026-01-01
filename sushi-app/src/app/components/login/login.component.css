@@ -9,17 +9,12 @@
 .login-card,
 .register-card {
   background-color: rgba(20, 20, 20, 0.6);
-  /* Semi-transparent */
   width: 100%;
   max-width: 450px;
   border-radius: 20px;
-  /* Plus arrondi */
   border: 1px solid rgba(255, 255, 255, 0.08);
-  /* Bordure subtile */
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  /* Ombre profonde */
   backdrop-filter: blur(20px);
-  /* Flou puissant */
   overflow: hidden;
   padding: 0;
   transition: all 0.5s ease;

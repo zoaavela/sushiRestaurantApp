@@ -15,10 +15,10 @@ export class TendancesComponent implements OnInit, AfterViewInit {
   loading = true;
   private map: any;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    // Correction du bug d'affichage des icônes Leaflet par défaut
+
     const iconRetinaUrl = 'assets/marker-icon-2x.png';
     const iconUrl = 'assets/marker-icon.png';
     const shadowUrl = 'assets/marker-shadow.png';
@@ -38,7 +38,7 @@ export class TendancesComponent implements OnInit, AfterViewInit {
       next: (data) => {
         this.stats = data;
         this.loading = false;
-        setTimeout(() => this.initMap(), 100); 
+        setTimeout(() => this.initMap(), 100);
       },
       error: (err) => {
         console.error(err);
@@ -47,7 +47,7 @@ export class TendancesComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void { }
 
   private initMap(): void {
     if (!this.stats || !this.stats.map_data) return;
@@ -72,12 +72,10 @@ export class TendancesComponent implements OnInit, AfterViewInit {
 
     // 3. Ajout des points
     this.stats.map_data.forEach((cityData: any) => {
-      
-      // Taille dynamique du cercle
-      const rawSize = 20 + (cityData.count * 3);
-      const size = Math.min(rawSize, 80); 
 
-      // Icône animée (Pulse)
+      const rawSize = 20 + (cityData.count * 3);
+      const size = Math.min(rawSize, 80);
+
       const pulseIcon = L.divIcon({
         className: 'custom-marker-container',
         html: `<div class="pulsating-circle" style="width:${size}px; height:${size}px;"></div>`,
@@ -103,8 +101,7 @@ export class TendancesComponent implements OnInit, AfterViewInit {
           direction: 'center',
           className: 'custom-tooltip',
           offset: [0, 0],
-          // C'EST ICI LA MAGIE : Rend l'étiquette sensible à la souris
-          interactive: true 
+          interactive: true
         }
       );
     });

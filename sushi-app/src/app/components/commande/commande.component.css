@@ -6,7 +6,7 @@
 .commande-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  /* 2/3 pour le formulaire, 1/3 pour le panier */
+  grid-template-columns: 2fr 1fr;
   gap: 2rem;
 }
 
@@ -32,8 +32,7 @@
   margin: 0;
   font-size: 1.5rem;
   color: var(--text-main);
-  /* font-family: var(--font-title); */
-  /* Enlevé si non défini */
+
 }
 
 .form-body,
@@ -137,16 +136,13 @@ textarea.form-control {
 .input-with-button .form-control {
   flex-grow: 1;
   padding: 8px 12px;
-  /* Ajuster la taille pour le bouton */
   height: 38px;
 }
 
 .btn-primary-small {
   padding: 0 15px;
   height: 38px;
-  /* Aligner sur l'input */
   flex-shrink: 0;
-  /* Style de bouton de base (vous pouvez ajuster selon vos variables globales) */
   background: var(--primary);
   color: white;
   border: none;
@@ -201,7 +197,7 @@ textarea.form-control {
 
 .summary-row.promo-row {
   color: #4CAF50;
-  /* Vert pour la remise promo */
+  color: #4CAF50;
   font-weight: 600;
 }
 
@@ -237,10 +233,7 @@ textarea.form-control {
   margin-top: 1.5rem;
   background: var(--primary);
   color: var(--bg-dark);
-  /* Noir pour contraste sur fond blanc */
-  border: none;
-  border-radius: 50px;
-  /* Plus rond comme le reste */
+  color: var(--bg-dark);
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -413,7 +406,6 @@ textarea.form-control {
   .error-modal {
     background-color: #121212;
     border: 1px solid #d32f2f;
-    /* Rouge */
     padding: 3rem;
     border-radius: 12px;
     text-align: center;
@@ -427,7 +419,6 @@ textarea.form-control {
   .error-icon {
     color: #ff5252;
     animation: none;
-    /* Pas de rebond pour l'erreur */
     filter: drop-shadow(0 0 10px rgba(255, 82, 82, 0.5));
   }
 

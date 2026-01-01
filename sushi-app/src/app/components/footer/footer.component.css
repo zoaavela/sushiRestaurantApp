@@ -1,9 +1,7 @@
 /* --- FOOTER LUXE --- */
 .footer {
   background-color: #050505;
-  /* Noir Profond */
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  /* Ligne très fine */
   padding: 6rem 0 3rem;
   margin-top: 6rem;
   color: #888;
@@ -34,15 +32,12 @@
   bottom: -8px;
   width: 40px;
   height: 1px;
-  /* Ligne plus fine */
   background-color: #fff;
-  /* Blanc chic au lieu de rouge */
   transition: width 0.3s ease;
 }
 
 .footer-section:hover h3::after {
   width: 100%;
-  /* Petit effet interactif */
 }
 
 .footer-section p {

@@ -1,12 +1,8 @@
 /* --- CONTAINER HEADER --- */
 .header {
-  /* Fixed pour rester en haut lors du scroll */
   background-color: transparent;
-  /* Transparent par défaut */
   backdrop-filter: blur(0px);
-  /* Pas de flou initialement */
   position: fixed;
-  /* Reste en haut */
   top: 0;
   left: 0;
   right: 0;
@@ -16,18 +12,13 @@
   transition: all 0.4s ease;
 }
 
-/* Classe ajoutée via JS (si implémenté) ou simple état sticky visuel */
 .header.scrolled {
   background-color: rgba(5, 5, 5, 0.85);
-  /* Fond sombre au scroll */
   backdrop-filter: blur(12px);
-  /* Flou au scroll */
   padding: 1rem 0;
-  /* Rétrécissement chic */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Optionnel : fond si on scroll (nécessite JS pour ajouter la classe .scrolled) */
 .header.scrolled {
   background-color: rgba(15, 15, 15, 0.95);
   backdrop-filter: blur(10px);
@@ -44,34 +35,25 @@
 /* --- LOGO --- */
 .logo {
   flex: 1;
-  /* Prend l'espace à gauche */
   display: flex;
   align-items: center;
   font-family: var(--font-title, 'sans-serif');
-  /* Utilise un logo épuré */
   font-size: 1.8rem;
-  /* Un peu plus grand */
   font-weight: 700;
   color: #ffffff;
   text-decoration: none;
   letter-spacing: -1px;
-  /* Style moderne compact */
 }
 
 /* --- NAVIGATION PILL (Centre) --- */
 .nav-center {
   background-color: rgba(255, 255, 255, 0.08);
-  /* Plus transparent */
   backdrop-filter: blur(20px);
-  /* Plus de flou */
   padding: 0.8rem 1.5rem;
-  /* Plus grand/large */
   border-radius: 100px;
-  /* Pilule parfaite */
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  /* Plus d'espace entre les liens */
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
@@ -117,7 +99,6 @@
 /* --- ACTIONS (Droite) --- */
 .nav-right {
   flex: 1;
-  /* Prend l'espace à droite */
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -190,7 +171,6 @@
     justify-content: center;
     margin-top: 1rem;
     overflow-x: auto;
-    /* Scroll horizontal si besoin */
     background: transparent;
     backdrop-filter: none;
     border: none;

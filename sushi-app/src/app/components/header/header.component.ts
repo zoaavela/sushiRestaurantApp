@@ -23,19 +23,15 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Suivre le panier pour le badge
     this.panierService.panier$.subscribe(() => {
       this.nombreItems = this.panierService.getNombreItems();
     });
-
-    // Suivre l'utilisateur pour l'affichage
     this.authService.currentUser$.subscribe(user => {
       this.currentUser = user;
       this.isLoggedIn = !!user;
     });
   }
 
-  // Écouteur de scroll pour l'effet sticky
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const header = document.querySelector('.header');
@@ -46,12 +42,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  // Getter pour savoir si c'est un admin (pour afficher le lien)
   get isAdmin(): boolean {
     return this.authService.isAdmin();
   }
-
-  // Initiales pour l'avatar
   getUserInitials(): string {
     if (this.currentUser?.firstname && this.currentUser?.lastname) {
       return (this.currentUser.firstname.charAt(0) + this.currentUser.lastname.charAt(0)).toUpperCase();

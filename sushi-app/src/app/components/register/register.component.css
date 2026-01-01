@@ -9,10 +9,8 @@
 .login-card,
 .register-card {
   background-color: rgba(20, 20, 20, 0.6);
-  /* Semi-transparent */
   width: 100%;
   max-width: 480px;
-  /* Un peu plus large pour register */
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -109,11 +107,9 @@ form,
 .form-row.three-cols {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  /* 3 colonnes égales */
   gap: 1rem;
 }
 
 .form-row .form-group {
   margin-bottom: 0;
-  /* Pour éviter double marge */
 }

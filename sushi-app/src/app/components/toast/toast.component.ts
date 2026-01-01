@@ -29,7 +29,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
       gap: 10px;
     }
     .toast {
-      background: #28a745; /* Vert succès */
+      background: #28a745;
       color: white;
       padding: 1rem 1.5rem;
       border-radius: 8px;
@@ -42,7 +42,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
       animation: slideIn 0.3s ease-out;
     }
     .toast.error {
-      background: #dc3545; /* Rouge erreur */
+      background: #dc3545;
     }
     .icon { font-size: 1.2rem; }
     .message { font-weight: 500; }
@@ -56,7 +56,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 export class ToastComponent {
   toasts$ = this.toastService.toasts$;
 
-  constructor(private toastService: ToastService) {}
+  constructor(private toastService: ToastService) { }
 
   remove(id: number) {
     this.toastService.remove(id);

@@ -17,7 +17,7 @@ export class AdminDashboardComponent implements OnInit {
   stats: any = null;
   loading = true;
 
-  // --- GRAPHIQUE LIGNE (CA) ---
+  // GRAPHIQUE CHIFFRES AFFAUIRE
   public lineChartData: ChartConfiguration['data'] = { datasets: [], labels: [] };
   public lineChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -31,7 +31,7 @@ export class AdminDashboardComponent implements OnInit {
   };
   public lineChartType: ChartType = 'line';
 
-  // --- GRAPHIQUE BATONS (SEMAINE) ---
+  // GRAPHIQUE BATONS 
   public barChartData: ChartConfiguration['data'] = { labels: [], datasets: [] };
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -44,7 +44,7 @@ export class AdminDashboardComponent implements OnInit {
   };
   public barChartType: ChartType = 'bar';
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.apiService.getAdminStats().subscribe({
@@ -61,7 +61,6 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   setupCharts(data: any) {
-    // 1. Line Chart (Courbe CA)
     const dates = data.charts.revenue_timeline.map((d: any) => d.date);
     const revenues = data.charts.revenue_timeline.map((d: any) => Number(d.daily_ca));
 
@@ -81,20 +80,17 @@ export class AdminDashboardComponent implements OnInit {
       }]
     };
 
-    // 2. Bar Chart (Affluence Semaine)
-    
-    // --- TRADUCTION DES JOURS ICI ---
+
     const dayTranslation: { [key: string]: string } = {
-        'Monday': 'Lundi',
-        'Tuesday': 'Mardi',
-        'Wednesday': 'Mercredi',
-        'Thursday': 'Jeudi',
-        'Friday': 'Vendredi',
-        'Saturday': 'Samedi',
-        'Sunday': 'Dimanche'
+      'Monday': 'Lundi',
+      'Tuesday': 'Mardi',
+      'Wednesday': 'Mercredi',
+      'Thursday': 'Jeudi',
+      'Friday': 'Vendredi',
+      'Saturday': 'Samedi',
+      'Sunday': 'Dimanche'
     };
 
-    // On applique la traduction sur chaque jour reçu de l'API
     const days = data.charts.weekly_traffic.map((d: any) => dayTranslation[d.day_name] || d.day_name);
     const counts = data.charts.weekly_traffic.map((d: any) => Number(d.count));
 
@@ -103,8 +99,8 @@ export class AdminDashboardComponent implements OnInit {
       datasets: [{
         data: counts,
         label: 'Commandes',
-        backgroundColor: '#d32f2f', // Rouge Sushi
-        hoverBackgroundColor: '#ffffff', // Blanc au survol
+        backgroundColor: '#d32f2f',
+        hoverBackgroundColor: '#ffffff',
         borderRadius: 4,
         barThickness: 25
       }]

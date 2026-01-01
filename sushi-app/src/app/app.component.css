@@ -1,7 +1,5 @@
-/* Espace pour le header fixed/absolute sur les pages standards */
 .main-content {
   min-height: calc(100vh - 120px);
   padding: 0;
   padding-top: 130px;
-  /* Plus d'espace pour le header */
 }
