@@ -9,7 +9,7 @@ import { Commande } from '../models/commande.model';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'http://localhost/API';
+  private baseUrl = 'http://localhost/api';
 
   constructor(private http: HttpClient) { }
 
