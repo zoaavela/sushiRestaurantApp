@@ -1,6 +1,6 @@
-# 🍣 Oishī
+# 🍣 Oishi - Borne de Commande Digitale
 
-**Oishī** est une application web de type "borne tactile" permettant aux clients de consulter le catalogue et de passer commande directement en restaurant. Le projet repose sur une architecture découplée utilisant **Angular** pour l'interface utilisateur et **PHP** pour la gestion des données et de l'API.
+**Oishi** est une application web de type "borne tactile" permettant aux clients de consulter le catalogue et de passer commande directement en restaurant. Le projet repose sur une architecture découplée utilisant **Angular** pour l'interface utilisateur et **PHP** pour la gestion des données et de l'API.
 
 ---
 
@@ -24,14 +24,14 @@ Suivez rigoureusement ces étapes pour déployer le projet sur votre machine loc
 
 ### 2. Configuration du Backend (API PHP)
 Le dossier API doit être servi par votre serveur local (Apache) pour traiter les requêtes.
-1. Localisez le dossier **`API/`** à la racine de ce projet.
-2. Déplacez ou copiez l'intégralité de ce dossier dans le répertoire **htdocs** de votre installation :
+1. Décompressez le fichier **`API.zip`** situé à la racine du projet.
+2. Déplacez ou copiez l'intégralité du dossier **`API/`** extrait dans le répertoire **htdocs** de votre installation :
    * *Exemple Windows :* `C:\xampp\htdocs\API`
    * *Exemple Mac :* `/Applications/MAMP/htdocs/API`
 3. Vérifiez que votre serveur Apache est bien activé.
 
 ### 3. Lancement du Frontend (Angular)
-1. Ouvrez un terminal dans le dossier racine du projet (là où se trouve le dossier `src/` et le fichier `package.json`).
+1. Ouvrez un terminal dans le dossier **`sushi-app/`** (là où se trouve le dossier `src/` et le fichier `package.json`).
 2. Installez les dépendances Node.js :
    ```bash
    npm install
@@ -42,6 +42,15 @@ Le dossier API doit être servi par votre serveur local (Apache) pour traiter le
    ```
 4. Ouvrez votre navigateur sur : http://localhost:4200
 
+### 4. Comptes de Test
+Pour accéder à l'application, utilisez l'un des comptes suivants :
+
+| Rôle | Email | Mot de passe |
+|------|-------|--------------|
+| **Administrateur** | test@admin.mmi | `testadmin` |
+| **Utilisateur** | test@user.mmi | `testuser` |
+| **Utilisateur Étudiant** | test@useretud.mmi | `testuseretud` |
+
 ---
 
 ## 📂 Arborescence du Projet
@@ -49,7 +58,7 @@ Le dossier API doit être servi par votre serveur local (Apache) pour traiter le
 ```
 .
 ├── sushi-app/               # Code source Angular (Composants, Services, Styles)
-├── API.zip                  # Dossier Backend PHP (À DÉPLACER DANS HTDOCS)
+├── API.zip                  # Dossier Backend PHP (À DÉCOMPRESSER ET DÉPLACER DANS HTDOCS)
 ├── sushi_box.sql            # Script d'importation de la base de données MySQL
 ├── NOTE DE LANCEMENT.pdf    # Note de lancement du projet
 ├── rapport301-303.pdf       # Rapport final du projet
@@ -68,3 +77,7 @@ Le dossier API doit être servi par votre serveur local (Apache) pour traiter le
 > **Note :** Ce projet est une borne de commande, il n'intègre pas de module de paiement en ligne.
 
 ---
+
+## 👤 Auteur
+
+Développement Fullstack - Ce projet a été réalisé pour démontrer l'interaction entre un framework moderne (Angular) et une API backend en PHP.
