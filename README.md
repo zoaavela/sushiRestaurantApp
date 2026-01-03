@@ -63,7 +63,7 @@ Pour accéder à l'application, utilisez l'un des comptes suivants :
 │   └── rapportFinal.pdf            # Rapport final
 ├── sushi-app/                      # Code source Angular
 ├── README.md                       # Documentation
-├── api.zip			                    # Dossier Backend PHP (À DÉCOMPRESSER ET DÉPLACER DANS HTDOCS)
+├── api.zip			                # Dossier Backend PHP (À DÉCOMPRESSER ET DÉPLACER DANS HTDOCS)
 └── sushi_box.sql                   # Fichier BDD (À IMPORTER DANS UNE BASE DE DONNÉES)
 ```
 
